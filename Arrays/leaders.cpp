@@ -1,31 +1,55 @@
 #include <iostream>
+#include <algorithm>
+#include <stack>
 #include <vector>
 using namespace std;
 
-vector <int> leaders(int *arr, int size){
     // Brute Force - O(N^2)
-    vector <int> ans;
-    for (int i = 0; i < size-1; i++)
-    {
-        bool flag = false;
-        for (int j{i+1}; j < size; ++j)
-        {
-            if (arr[i] < arr[j])
-            {
-                flag = true;
-                break;
-            }
+// vector <int> leaders(int *arr, int size){
+//     vector <int> ans;
+//     for (int i = 0; i < size-1; i++)
+//     {
+//         bool flag = false;
+//         for (int j{i+1}; j < size; ++j)
+//         {
+//             if (arr[i] <= arr[j])
+//             {
+//                 flag = true;
+//                 break;
+//             }
             
-        }
-        if (flag == false)
+//         }
+//         if (flag == false)
+//         {
+//             ans.push_back(arr[i]);
+//         }
+        
+//     }
+//     ans.push_back(arr[size-1]);
+//     return ans;
+// }
+
+// Optimized Soln - O(n)
+
+// 7 7 10 4 10 6 5 2 -> 10 6 5 2 
+
+vector <int> leaders(int arr[], int size){
+    vector <int> ans;
+    int curr_leader = arr[size-1];
+    ans.push_back(arr[size-1]);
+    for (int i = size-2; i >= 0; i--)
+    {
+        if (curr_leader < arr[i])
         {
+            // cout << arr[i] << " ";
+            curr_leader = arr[i];
             ans.push_back(arr[i]);
         }
-        
     }
-    ans.push_back(arr[size-1]);
+    reverse(ans.begin(), ans.end());
     return ans;
 }
+
 
 int main(){
     int n;
@@ -41,9 +65,6 @@ int main(){
         cout << i << " ";
     }
     
-    
     delete [] arr;
     return 0;
-    
-
 }
