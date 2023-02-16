@@ -30,26 +30,54 @@ void preorder(node *root){
 
 // Iteratitve preorder traversal
 
-void iterative_preorder(node *root){
+// void iterative_preorder(node *root){
+//     if (root == NULL)
+//     {
+//         return;
+//     }
+//     stack <node*> s;
+//     s.push(root);
+//     while (!s.empty())
+//     {
+//         node* temp = s.top();
+//         s.pop();
+//         cout << temp->data << " ";
+//         if (temp->right != NULL)
+//         {
+//             s.push(temp->right);
+//         }
+//         if (temp->left != NULL)
+//         {
+//             s.push(temp->left);
+//         }
+//     }
+// }
+// Iteratitive Preorder space optimized - Space -> O(h)
+void iterative_preorder(node *root)
+{
     if (root == NULL)
     {
         return;
     }
-    stack <node*> s;
-    s.push(root);
-    while (!s.empty())
+    stack <node*> st;
+    st.push(root);
+    node * curr = root;
+    while (!st.empty() || curr != NULL)
     {
-        node* temp = s.top();
-        s.pop();
-        cout << temp->data << " ";
-        if (temp->right != NULL)
+        while(curr != NULL)
         {
-            s.push(temp->right);
+            cout << curr->data;
+            if (curr->right != NULL)
+            {
+                st.push(curr->right);
+            }
+            curr = curr->left;
         }
-        if (temp->left != NULL)
+        if (!st.empty())
         {
-            s.push(temp->left);
-        }
+            curr = st.top(); 
+            st.pop();
+        }  
     }
 }
 int main()
