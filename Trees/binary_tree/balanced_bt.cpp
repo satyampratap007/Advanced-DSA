@@ -30,6 +30,9 @@ struct Node
 //     return(abs(l_h - r_h) <= 1 && isBalanced(root->left) && isBalanced(root->right));
 // }
 
+// Efficient Approach
+// It returns -1 if it is unbalanced and returns any positive value if it is balanced
+
 int balanced(Node*root)
 {
     if (root == NULL)
