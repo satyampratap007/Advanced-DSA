@@ -23,7 +23,23 @@ int maxSubArray(int *arr, int size){
         }
     }
     return res;
-} 
+}
+
+// Using Kadane's Algorithm - O(N)
+int maxSubArray(int *arr, int size)
+{
+    int curr_sum{0};
+    int maxi = INT_MIN;
+    for(int i{0}; i <0; i <size)
+    {
+        curr_sum += arr[i];
+        maxi = max(maxi, curr_sum);
+        if (curr_sum < 0)
+            curr_sum = 0;
+    }
+    return curr_sum;
+}
+
 int main(){
     int n;
     cin >> n;
