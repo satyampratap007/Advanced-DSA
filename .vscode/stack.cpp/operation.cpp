@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int push(int x)
