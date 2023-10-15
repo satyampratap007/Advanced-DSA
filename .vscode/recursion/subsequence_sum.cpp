@@ -36,7 +36,8 @@ using namespace std;
 //             {
 //                 cout << i << " ";           
 //             }
-//             cout << endl;
+            // cout << endl;
+            // return true;
 //         }
 //         else{
 //             return false;
@@ -75,10 +76,6 @@ int count(int index,int s,int *arr, int n, int sum)
     return l+r;
 
 }
-
-
-
-
 
 
 int main(){
